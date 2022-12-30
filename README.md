@@ -29,10 +29,15 @@ Sudoku state is representing by `SudokuState`. `SudokuState` contains its curren
 - True otherwise
 
 ### Depth First Search
-### test
+### Testing
 A valid state is assumed to be passed into `depth_first_search`. `depth_first_search` will first pick up an empty cell (`pick_next_cell`) and the list of possible values of that empty cell (`pick_next_values`). By making use of the list of possible values, it starts to explore as deepest as possible along each possible values. For each iteration, a new value will be assigned to that empty cell by calling `SudokuState.set_value()`, and then a new `SudokuState` will be returned. Base on this new state, if it is already a complete state (`SudokuState.is_goal()`), it will be returned directly. Otherwise, it will be passed to next iteration for further next cell assignment by calling `depth_first_search` recursively until a complete state is found or no more assignment is avaliable.
 ### Optimization
 As mentioned, for each iteration, an empty cell is pick up randomly from the state. However, it is not a desirable way to start with. It makes the search takes longer time to finish if a cell which has many possible values in it is pick up. It affects the hard level sudoku state the most, normally it takes more than 30s to finish the searching. The most extreme case is more than 4 mins. Therefore, an optimization is carried out on `pick_next_cell` function. The aim is to return the cell which contains the fewest possible values. As a result, the searching performance improved significantly from nearly 4 mins to within 10s.
+
+## Usage
+```
+$ python3 test.py
+```
 
 ## References
 [^1] https://medium.com/my-udacity-ai-nanodegree-notes/solving-sudoku-think-constraint-satisfaction-problem-75763f0742c9
