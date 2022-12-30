@@ -1,0 +1,9 @@
+# Jupyter Notebook Related
+.ipynb_checkpoints
+
+# OS X stuff
+*.DS_Store
+
+# Others
+.idea/
+__pycache__
